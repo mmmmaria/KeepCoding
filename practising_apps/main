@@ -1,0 +1,30 @@
+import pygame, sys
+
+class Game():
+    runners = []
+    __starline = 20
+    __finishline = 620
+
+    def __init__(self):
+        self.__screen = pygame.display.set_mode((640, 480))
+#       self.__screen.fill((0,255,0)) #Esto cargaría una pantalla
+        self.__background = pygame.image.load("images/background.png") #Prefiero cargar una imagen
+        pygame.display.set_caption("Carrera de bichos")
+        
+    def competir(self):
+        gameOver = False
+        while not gameOver:
+            for event in pygame.event.get(): #el buffer de eventos de pygame (que es pygame.event.get()) nos da una lista de los eventos que se prodcen
+                if event.type == pygame.QUIT:
+                    gameOver = True
+                    
+            self.__screen.blit(self.__background, (0,0))
+            pygame.display.flip() #refrescamos
+       
+        pygame.quit()
+        sys.exit()
+
+if __name__ == '__main__':
+   game = Game()
+   pygame.init()
+   game.competir()
