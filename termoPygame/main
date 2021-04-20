@@ -1,0 +1,29 @@
+import pygame, sys
+from pygame.locals import *
+
+class MainApp():
+    termometro = None
+    entrada = None
+    selector = None
+    
+    def __init__(self): #este es el constructor
+        self.__screen = pygame.display.set_mode((290,415))
+        pygame.display.set_caption("Termometro")
+        self.__screen.fill((244,236,203)) #color amarillento
+    
+    def __on_close(self):
+        pygame.quit()
+        sys.exit()
+        
+    def start(self):
+        while True:
+            for event in pygame.event.get(): #capturo los eventos
+                if event.type ==QUIT:
+                    self.__on_close()
+            
+            pygame.display.flip()
+            
+if __name__ == '__main__':
+    pygame.init()
+    app = MainApp() #creo la instancia
+    app.start() #me meto en el bucle principal de la instancia, la ejecuto
